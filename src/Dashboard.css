@@ -1,0 +1,115 @@
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    height: 100vh
+}
+
+.dashboard__sidebar {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0
+}
+
+.dashboard__sidebar-header {
+    text-align: center;
+    margin-bottom: 1rem
+}
+
+.dashboard__sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1
+}
+
+.dashboard__sidebar-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+    cursor: pointer
+}
+
+.dashboard__sidebar-button:hover {
+    background-color: rgba(255, 255, 255, .1)
+}
+
+.dashboard__day {
+    width: calc(100% / 7);
+    min-width: 100px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    margin: .5rem;
+    box-sizing: border-box;
+    background-color: #fff
+}
+
+.dashboard__day-header {
+    font-weight: 700;
+    margin-bottom: .5rem
+}
+
+.dashboard__content {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: calc(100% - 4rem);
+    margin-top: 4rem;
+    margin-left: 200px;
+
+}
+
+.dashboard__day {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 .5rem;
+    width: calc(100% / 7);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard__day-name {
+    font-size: 1.2rem;
+    margin-bottom: .5rem
+}
+
+.dashboard__day-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    background-color: #222;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.dashboard__day-tasks {
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    padding: 1rem;
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+}

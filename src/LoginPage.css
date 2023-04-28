@@ -1,0 +1,56 @@
+form {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 400px;
+}
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: #2B2B2B;
+    color: #FFFFFF;
+}
+
+label {
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    display: block;
+    margin: 20px 0;
+}
+
+body {
+    background-color: #222;
+}
