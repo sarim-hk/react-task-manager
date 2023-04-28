@@ -12,6 +12,9 @@ const Dashboard = () => {
           <h2>Sarim Khalil</h2>
         </div>
         <div className="dashboard__sidebar-buttons">
+          <div className="dashboard__sidebar-buttons__label-buttons">
+            <button className="dashboard__sidebar-button">Add / Edit Label</button>
+          </div>
           <button className="dashboard__sidebar-button"><FaCog /> Settings</button>
           <button className="dashboard__sidebar-button"><FaSignOutAlt /> Logout</button>
         </div>
@@ -46,8 +49,17 @@ const Dashboard = () => {
           <div className="dashboard__day-tasks"></div>
         </div>
       </div>
+      <div className="dashboard__bottom-navbar">
+        <div className="dashboard__searchbar">
+          <input type="text" placeholder="Search..." />
+          <button className="dashboard__searchbar-button"><FaSearch /></button>
+        </div>
+        <div className="dashboard__icons">
+          <button className="dashboard__icon-button"><FaTrashAlt /></button>
+          <button className="dashboard__icon-button"><FaBell /></button>
+        </div>
+      </div>
     </div>
   );
 }
-
 export default Dashboard;

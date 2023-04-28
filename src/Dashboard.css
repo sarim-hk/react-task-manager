@@ -57,7 +57,7 @@
     border-radius: .5rem;
     margin: .5rem;
     box-sizing: border-box;
-    background-color: #fff
+    background-color: #ffffff
 }
 
 .dashboard__day-header {
@@ -72,7 +72,7 @@
     flex-wrap: wrap;
     width: 100%;
     height: calc(100% - 4rem);
-    margin-top: 4rem;
+    margin-top: 1rem;
     margin-left: 200px;
 
 }
@@ -112,4 +112,74 @@
     width: 100%;
     height: calc(100% - 4rem);
     overflow-y: auto;
+}
+
+.dashboard__bottom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+    padding: 0 1rem;
+    height: 4rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.dashboard__searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard__searchbar input[type="text"] {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    width: 200px;
+}
+
+.dashboard__searchbar-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.dashboard__icons {
+    display: flex;
+}
+
+.dashboard__icon-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.dashboard__sidebar {
+    background-color: #333;
+}
+
+.dashboard__bottom-navbar {
+    background-color: #333;
+}
+
+.dashboard__sidebar,
+.dashboard__bottom-navbar {
+    outline: 1px solid #ccc;
+}
+
+.dashboard__sidebar-buttons {
+    margin-bottom: 4rem;
+}
+
+.dashboard__sidebar-buttons__label-buttons {
+    vertical-align: top;
 }
