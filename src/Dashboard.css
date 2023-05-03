@@ -57,7 +57,12 @@
     border-radius: .5rem;
     margin: .5rem;
     box-sizing: border-box;
-    background-color: #ffffff
+    background-color: #ffffff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95%;
 }
 
 .dashboard__day-header {
@@ -77,17 +82,6 @@
 
 }
 
-.dashboard__day {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 .5rem;
-    width: calc(100% / 7);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
 .dashboard__day-name {
     font-size: 1.2rem;
@@ -163,11 +157,8 @@
     cursor: pointer;
 }
 
+.dashboard__bottom-navbar,
 .dashboard__sidebar {
-    background-color: #333;
-}
-
-.dashboard__bottom-navbar {
     background-color: #333;
 }
 
@@ -178,8 +169,4 @@
 
 .dashboard__sidebar-buttons {
     margin-bottom: 4rem;
-}
-
-.dashboard__sidebar-buttons__label-buttons {
-    vertical-align: top;
 }

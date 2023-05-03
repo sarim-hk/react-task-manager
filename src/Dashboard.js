@@ -6,19 +6,22 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
+    <div className="dashboard">      
       <div className="dashboard__sidebar">
         <div className="dashboard__sidebar-header">
           <h2>Sarim Khalil</h2>
         </div>
+
+        <div className="dashboard__sidebar-buttons__label-buttons">
+          <button className="dashboard__sidebar-button">Add / Edit Label</button>
+        </div>
+
         <div className="dashboard__sidebar-buttons">
-          <div className="dashboard__sidebar-buttons__label-buttons">
-            <button className="dashboard__sidebar-button">Add / Edit Label</button>
-          </div>
-          <button className="dashboard__sidebar-button"><FaCog /> Settings</button>
-          <button className="dashboard__sidebar-button"><FaSignOutAlt /> Logout</button>
+          <Link to="/settings"><button className="dashboard__sidebar-button"><FaCog /> Settings</button></Link>
+          <Link to="/"><button className="dashboard__sidebar-button"><FaSignOutAlt /> Logout</button></Link>
         </div>
       </div>
+
       <div className="dashboard__content">
         <div className="dashboard__day">
           <div className="dashboard__day-name">Monday</div>
