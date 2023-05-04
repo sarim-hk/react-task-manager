@@ -1,0 +1,94 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.settings-category {
+    width: 100%;
+    background-color: #333;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color:white;
+}
+
+.settings-category h3 {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    
+}
+
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.settings-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.settings-option label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: white;
+}
+
+.settings-option input[type="text"],
+.settings-option input[type="password"] {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    color: #000;
+    background-color: #fff;
+}
+
+.settings-option input[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+.settings-option select {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    appearance: none;
+    background-color: #f2f2f2;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 8px 4px;
+    color: #000;
+}
+
+.settings-option select option {
+    background-color: #f2f2f2;
+}
+
+.settings-option select {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    appearance: none;
+    background-color: #f2f2f2;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 8px 4px;
+    flex: 100%;
+}
+
+.settings-option label {
+    width: 80px;
+}
+

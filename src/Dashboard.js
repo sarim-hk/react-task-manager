@@ -25,31 +25,45 @@ const Dashboard = () => {
       <div className="dashboard__content">
         <div className="dashboard__day">
           <div className="dashboard__day-name">Monday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Tuesday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Wednesday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Thursday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Friday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Saturday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
         <div className="dashboard__day">
           <div className="dashboard__day-name">Sunday</div>
-          <div className="dashboard__day-tasks"></div>
+          <div className="dashboard__day-tasks">
+            <button className="dashboard__day-button">Add Task</button>
+          </div>
         </div>
       </div>
       <div className="dashboard__bottom-navbar">
