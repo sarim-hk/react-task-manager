@@ -1,0 +1,157 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-header h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.task-name {
+    flex-basis: 100%;
+}
+
+.task-name input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.task-details {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.description,
+.priority,
+.label,
+.time {
+    flex-basis: calc(50% - 10px);
+}
+
+.description {
+    margin-right: 10px;
+}
+
+.priority,
+.label,
+.time {
+    margin-left: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+select,
+input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.close-button {
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ddd;
+    color: #444;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.task-name input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-name {
+    width: 100%;
+    display: flex;
+}
+
+.task-name input {
+    flex: 1;
+}
+
+@media (max-width: 767px) {
+
+    .description,
+    .priority,
+    .label,
+    .time {
+        width: 100%;
+    }
+}
+
+.time input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}

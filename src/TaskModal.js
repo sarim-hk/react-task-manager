@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import './TaskModal.css';
+import './TaskItem.css';
+
+function TaskModal(props) {
+  const { onClose } = props;
+  const [taskName, setTaskName] = useState('');
+
+  function addTaskToDashboard() {
+    const newTaskElement = document.createElement("div");
+    newTaskElement.classList.add("task-item"); // Add a class for styling
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("task-checkbox");
+    newTaskElement.appendChild(checkbox); // Append the checkbox to the task item element
+
+    const taskText = document.createElement("span");
+    taskText.textContent = taskName;
+    newTaskElement.appendChild(taskText); // Append the text to the task item element
+
+    const dashboardTasksDiv = document.querySelector(".dashboard__day-tasks");
+    dashboardTasksDiv.appendChild(newTaskElement);
+    onClose();
+  }
+
+
+
+
+  function handleTaskNameChange(event) {
+    setTaskName(event.target.value);
+  }
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h3>Add Task</h3>
+          <button className="close-button" onClick={onClose}>X</button>
+        </div>
+        <div className="modal-body">
+          <div className="task-name">
+            <input
+              className="task-name-text"
+              type="text"
+              placeholder="Task name"
+              value={taskName}
+              onChange={handleTaskNameChange}
+            />
+          </div>
+          <div className="task-details">
+            <div className="description">
+              <label htmlFor="description">Description:</label>
+              <textarea id="description" />
+            </div>
+            <div className="priority">
+              <label htmlFor="priority">Priority:</label>
+              <select id="priority">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div className="label">
+              <label htmlFor="label">Label:</label>
+              <select id="label">
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="school">School</option>
+              </select>
+            </div>
+            <div className="time">
+              <label htmlFor="time">Time:</label>
+              <input type="time" id="time" name="time" />
+            </div>
+          </div>
+          <button className="add-button" onClick={addTaskToDashboard}>Add Task</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default TaskModal;

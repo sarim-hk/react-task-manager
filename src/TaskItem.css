@@ -1,0 +1,11 @@
+.task-item {
+    border: 1px solid black;
+    background-color: #ccc;
+    padding: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.task-checkbox {
+    margin-right: 8px;
+}
