@@ -1,5 +1,7 @@
 import React from "react";
 import "./Settings.css";
+import { Link } from 'react-router-dom';
+
 
 function Settings() {
     return (
@@ -40,6 +42,11 @@ function Settings() {
                         <option value="sunday">Sunday</option>
                         <option value="monday">Monday</option>
                     </select>
+                </div>
+                <div className="settings-footer">
+                    <Link to="/dashboard" className="back-button">
+                        Back
+                    </Link>
                 </div>
             </div>
         </div>

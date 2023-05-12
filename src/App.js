@@ -14,6 +14,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/task-modal" element={<TaskModal />} />
+        <Route path="*" element={<LoginPage />} />
       </Routes>
     </Router>
   );

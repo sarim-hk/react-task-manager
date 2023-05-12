@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './TaskModal.css';
 import './TaskItem.css';
 
-function TaskModal(props) {
-  const { onClose } = props;
+function TaskModal({ onClose, targetDay }) {
   const [taskName, setTaskName] = useState('');
 
   function addTaskToDashboard() {
     const newTaskElement = document.createElement("div");
     newTaskElement.classList.add("task-item"); // Add a class for styling
+    newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -19,9 +19,29 @@ function TaskModal(props) {
     taskText.textContent = taskName;
     newTaskElement.appendChild(taskText); // Append the text to the task item element
 
-    const dashboardTasksDiv = document.querySelector(".dashboard__day-tasks");
+    // Add drag and drop attributes to the task item
+    newTaskElement.draggable = true;
+    newTaskElement.addEventListener("dragstart", handleDragStart);
+    newTaskElement.addEventListener("dragend", handleDragEnd);
+
+    const dashboardTasksDiv = document.getElementById(targetDay);
     dashboardTasksDiv.appendChild(newTaskElement);
     onClose();
+  }
+
+  function handleDragStart(event) {
+    // Set the dragged data (task ID)
+    const taskItem = event.target;
+    const taskId = taskItem.dataset.taskId;
+    event.dataTransfer.setData("text/plain", taskId);
+
+    // Add a class to the dragged task item
+    taskItem.classList.add("dragging");
+  }
+
+  function handleDragEnd(event) {
+    // Remove the dragging class from the task item
+    event.target.classList.remove("dragging");
   }
 
 

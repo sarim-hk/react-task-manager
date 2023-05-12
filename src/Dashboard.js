@@ -6,15 +6,47 @@ import TaskModal from './TaskModal';
 
 function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(null);
 
-  const handleModalClick = () => {
-    setIsModalOpen(true);
+  const [modalStates, setModalStates] = useState({
+    Monday: false,
+    Tuesday: false,
+    Wednesday: false,
+    Thursday: false,
+    Friday: false,
+    Saturday: false,
+    Sunday: false
+  });
+
+  const handleModalClick = (targetDay) => {
+    setSelectedDay(targetDay);
+    setModalStates((prevStates) => ({
+      ...prevStates,
+      [targetDay]: true
+    }));
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    setSelectedDay(null);
+    setModalStates((prevStates) => ({
+      ...prevStates,
+      [selectedDay]: false
+    }));
   };
-  
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData("text/plain");
+    const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+    if (taskItem) {
+      taskItem.remove();
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="dashboard">
       <div className="dashboard__sidebar">
@@ -32,7 +64,7 @@ function Dashboard() {
               <FaCog /> Settings
             </button>
           </Link>
-          <Link to="/">
+          <Link to="/index.html">
             <button className="dashboard__sidebar-button">
               <FaSignOutAlt /> Logout
             </button>
@@ -43,81 +75,83 @@ function Dashboard() {
       <div className="dashboard__content">
         <div className="dashboard__day">
           <div className="dashboard__day-name">Monday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Monday">
+            <button onClick={() => handleModalClick("Monday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Monday && <TaskModal onClose={handleCloseModal} targetDay="Monday" />}
           </div>
         </div>
-        
+
         <div className="dashboard__day">
           <div className="dashboard__day-name">Tuesday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Tuesday">
+            <button onClick={() => handleModalClick("Tuesday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Tuesday && <TaskModal onClose={handleCloseModal} targetDay="Tuesday" />}
           </div>
         </div>
 
         <div className="dashboard__day">
           <div className="dashboard__day-name">Wednesday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Wednesday">
+            <button onClick={() => handleModalClick("Wednesday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Wednesday && <TaskModal onClose={handleCloseModal} targetDay="Wednesday" />}
           </div>
         </div>
 
         <div className="dashboard__day">
           <div className="dashboard__day-name">Thursday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Thursday">
+            <button onClick={() => handleModalClick("Thursday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Thursday && <TaskModal onClose={handleCloseModal} targetDay="Thursday" />}
           </div>
         </div>
 
         <div className="dashboard__day">
           <div className="dashboard__day-name">Friday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Friday">
+            <button onClick={() => handleModalClick("Friday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Friday && <TaskModal onClose={handleCloseModal} targetDay="Friday" />}
           </div>
         </div>
 
         <div className="dashboard__day">
           <div className="dashboard__day-name">Saturday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Saturday">
+            <button onClick={() => handleModalClick("Saturday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Saturday && <TaskModal onClose={handleCloseModal} targetDay="Saturday" />}
           </div>
         </div>
 
         <div className="dashboard__day">
           <div className="dashboard__day-name">Sunday</div>
-          <div className="dashboard__day-tasks">
-            <button onClick={handleModalClick} className="dashboard__day-button">
+          <div className="dashboard__day-tasks" id="Sunday">
+            <button onClick={() => handleModalClick("Sunday")} className="dashboard__day-button">
               Add Task
             </button>
-            {isModalOpen && <TaskModal onClose={handleCloseModal} />}
+            {modalStates.Sunday && <TaskModal onClose={handleCloseModal} targetDay="Sunday" />}
           </div>
-
         </div>
+
         <div className="dashboard__bottom-navbar">
           <div className="dashboard__searchbar">
             <input type="text" placeholder="Search..." />
             <button className="dashboard__searchbar-button"><FaSearch /></button>
           </div>
           <div className="dashboard__icons">
-            <button className="dashboard__icon-button"><FaTrashAlt /></button>
+            <div className="dashboard__icon-button" onDrop={handleDrop} onDragOver={handleDragOver}>
+              <FaTrashAlt />
+            </div>
             <button className="dashboard__icon-button"><FaBell /></button>
           </div>
         </div>
