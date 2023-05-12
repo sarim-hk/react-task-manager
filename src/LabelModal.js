@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './LabelModal.css';
 
-function LabelModal({ onClose }) {
+function LabelModal({ onClose, onLabelAdd }) {
     const [label, setLabel] = useState('');
 
     function addLabelToDashboard(event) {
+        event.preventDefault();
+
         const newTaskElement = document.createElement("div");
         newTaskElement.classList.add("task-item"); // Add a class for styling
         newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
@@ -26,6 +28,7 @@ function LabelModal({ onClose }) {
 
         const dashboardTasksDiv = document.getElementById("labels");
         dashboardTasksDiv.appendChild(newTaskElement);
+        onLabelAdd(label);
         onClose();
     }
 
@@ -49,27 +52,28 @@ function LabelModal({ onClose }) {
         setLabel(event.target.value);
     };
 
-    return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h3>Add Label</h3>
-                    <button className="close-button" onClick={onClose}>X</button>
-                </div>
-                <div className="modal-body">
-                    <form onSubmit={addLabelToDashboard}>
-                        <input className="label-name"
-                            type="text"
-                            value={label}
-                            onChange={handleLabelChange}
-                            placeholder="Enter label"
-                        />
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h3>Add Label</h3>
+          <button className="close-button" onClick={onClose}>X</button>
         </div>
-    );
+        <div className="modal-body">
+          <form onSubmit={addLabelToDashboard}>
+            <input
+              className="label-name"
+              type="text"
+              value={label}
+              onChange={handleLabelChange}
+              placeholder="Enter label"
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default LabelModal;
