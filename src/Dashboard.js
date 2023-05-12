@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom';
 import { FaSearch, FaTrashAlt, FaBell, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import './Dashboard.css';
 import TaskModal from './TaskModal';
+import NotificationShade from './NotificationShade';
+import LabelModal from './LabelModal';
 
 function Dashboard() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [isLabelModalOpen, setIsLabelModalOpen] = useState(false);
+
+  const toggleLabelModal = () => {
+    setIsLabelModalOpen(!isLabelModalOpen);
+  };
+
+  const closeLabelModal = () => {
+    setIsLabelModalOpen(false);
+  };
+
 
   const [modalStates, setModalStates] = useState({
     Monday: false,
@@ -34,6 +46,10 @@ function Dashboard() {
     }));
   };
 
+  const toggleNotification = () => {
+    setIsNotificationOpen(!isNotificationOpen);
+  };
+
   const handleDrop = (event) => {
     event.preventDefault();
     const taskId = event.dataTransfer.getData("text/plain");
@@ -54,9 +70,13 @@ function Dashboard() {
           <h2>Sarim Khalil</h2>
         </div>
 
-        <div className="dashboard__sidebar-buttons__label-buttons">
-          <button className="dashboard__sidebar-button">Add / Edit Label</button>
+        <div className="dashboard__sidebar-buttons__label-buttons" id="labels">
+          <button className="dashboard__sidebar-button" onClick={toggleLabelModal}>
+            Add / Edit Label
+          </button>
+          {isLabelModalOpen && <LabelModal onClose={closeLabelModal} />}
         </div>
+
 
         <div className="dashboard__sidebar-buttons">
           <Link to="/settings">
@@ -149,10 +169,15 @@ function Dashboard() {
             <button className="dashboard__searchbar-button"><FaSearch /></button>
           </div>
           <div className="dashboard__icons">
+
             <div className="dashboard__icon-button" onDrop={handleDrop} onDragOver={handleDragOver}>
               <FaTrashAlt />
             </div>
-            <button className="dashboard__icon-button"><FaBell /></button>
+            <div className="dashboard__icon-button" onClick={toggleNotification}>
+              <FaBell />
+            </div>
+            {isNotificationOpen && <NotificationShade />}
+            
           </div>
         </div>
       </div>

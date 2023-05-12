@@ -1,0 +1,11 @@
+.notification-shade {
+    position: absolute;
+    right: 1%;
+    bottom: 50px;
+    width: 25%;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}

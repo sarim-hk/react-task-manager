@@ -10,7 +10,7 @@ function TaskModal({ onClose, targetDay }) {
     newTaskElement.classList.add("task-item"); // Add a class for styling
     newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
 
-    const checkbox = document.createElement("input");
+    const checkbox = document.createElement("input", {type: 'checkbox', defaultChecked: true});
     checkbox.type = "checkbox";
     checkbox.classList.add("task-checkbox");
     newTaskElement.appendChild(checkbox); // Append the checkbox to the task item element
