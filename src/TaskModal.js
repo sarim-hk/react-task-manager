@@ -2,28 +2,27 @@ import React, { useState } from 'react';
 import './TaskModal.css';
 import './TaskItem.css';
 
-function TaskModal({ onClose, targetDay, labels }) {
+function TaskModal({ onClose, targetDay }) {
   const [taskName, setTaskName] = useState('');
-  const [selectedLabel, setSelectedLabel] = useState('');
 
   function addTaskToDashboard() {
-    const newTaskElement = document.createElement('div');
-    newTaskElement.classList.add('task-item'); // Add a class for styling
-    newTaskElement.setAttribute('data-task-id', `task-${Date.now()}`);
+    const newTaskElement = document.createElement("div");
+    newTaskElement.classList.add("task-item"); // Add a class for styling
+    newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('task-checkbox');
+    const checkbox = document.createElement("input", { type: 'checkbox', defaultChecked: true });
+    checkbox.type = "checkbox";
+    checkbox.classList.add("task-checkbox");
     newTaskElement.appendChild(checkbox); // Append the checkbox to the task item element
 
-    const taskText = document.createElement('span');
+    const taskText = document.createElement("span");
     taskText.textContent = taskName;
     newTaskElement.appendChild(taskText); // Append the text to the task item element
 
     // Add drag and drop attributes to the task item
     newTaskElement.draggable = true;
-    newTaskElement.addEventListener('dragstart', handleDragStart);
-    newTaskElement.addEventListener('dragend', handleDragEnd);
+    newTaskElement.addEventListener("dragstart", handleDragStart);
+    newTaskElement.addEventListener("dragend", handleDragEnd);
 
     const dashboardTasksDiv = document.getElementById(targetDay);
     dashboardTasksDiv.appendChild(newTaskElement);
@@ -34,23 +33,22 @@ function TaskModal({ onClose, targetDay, labels }) {
     // Set the dragged data (task ID)
     const taskItem = event.target;
     const taskId = taskItem.dataset.taskId;
-    event.dataTransfer.setData('text/plain', taskId);
+    event.dataTransfer.setData("text/plain", taskId);
 
     // Add a class to the dragged task item
-    taskItem.classList.add('dragging');
+    taskItem.classList.add("dragging");
   }
 
   function handleDragEnd(event) {
     // Remove the dragging class from the task item
-    event.target.classList.remove('dragging');
+    event.target.classList.remove("dragging");
   }
+
+
+
 
   function handleTaskNameChange(event) {
     setTaskName(event.target.value);
-  }
-
-  function handleLabelChange(event) {
-    setSelectedLabel(event.target.value);
   }
 
   return (
@@ -58,9 +56,7 @@ function TaskModal({ onClose, targetDay, labels }) {
       <div className="modal-content">
         <div className="modal-header">
           <h3>Add Task</h3>
-          <button className="close-button" onClick={onClose}>
-            X
-          </button>
+          <button className="close-button" onClick={onClose}>X</button>
         </div>
         <div className="modal-body">
           <div className="task-name">
@@ -89,12 +85,10 @@ function TaskModal({ onClose, targetDay, labels }) {
             </div>
             <div className="label">
               <label htmlFor="label">Label:</label>
-              <select id="label" value={selectedLabel} onChange={handleLabelChange}>
-                {labels.map((label) => (
-                  <option value={label} key={label}>
-                    {label}
-                  </option>
-                ))}
+              <select id="label">
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="school">School</option>
               </select>
             </div>
             <div className="time">
@@ -102,9 +96,7 @@ function TaskModal({ onClose, targetDay, labels }) {
               <input type="time" id="time" name="time" />
             </div>
           </div>
-          <button className="add-button" onClick={addTaskToDashboard}>
-            Add Task
-          </button>
+          <button className="add-button" onClick={addTaskToDashboard}>Add Task</button>
         </div>
       </div>
     </div>

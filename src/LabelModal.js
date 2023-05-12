@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './LabelModal.css';
 
-function LabelModal({ onClose, onLabelAdd }) {
+function LabelModal({ onClose }) {
     const [label, setLabel] = useState('');
 
     function addLabelToDashboard(event) {
-        event.preventDefault();
-
         const newTaskElement = document.createElement("div");
         newTaskElement.classList.add("task-item"); // Add a class for styling
         newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
@@ -28,7 +26,6 @@ function LabelModal({ onClose, onLabelAdd }) {
 
         const dashboardTasksDiv = document.getElementById("labels");
         dashboardTasksDiv.appendChild(newTaskElement);
-        onLabelAdd(label);
         onClose();
     }
 
