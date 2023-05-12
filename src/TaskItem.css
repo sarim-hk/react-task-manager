@@ -9,3 +9,10 @@
 .task-checkbox {
     margin-right: 8px;
 }
+
+.task-label {
+    font-size: 12px;
+    /* Adjust the font size as needed */
+    display: block;
+    /* Make the label a block element to appear below the task text */    /* Add some space between the task name and label */
+}

@@ -11,14 +11,19 @@ function TaskModal({ onClose, targetDay, labels }) {
     newTaskElement.classList.add("task-item"); // Add a class for styling
     newTaskElement.setAttribute("data-task-id", `task-${Date.now()}`);
 
-    const checkbox = document.createElement("input", { type: 'checkbox', defaultChecked: true });
+    const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.classList.add("task-checkbox");
     newTaskElement.appendChild(checkbox); // Append the checkbox to the task item element
 
     const taskText = document.createElement("span");
     taskText.textContent = taskName;
-    newTaskElement.appendChild(taskText); // Append the text to the task item element
+    newTaskElement.appendChild(taskText); // Append the task text to the task item element
+
+    const taskLabel = document.createElement("span");
+    taskLabel.classList.add("task-label");
+    taskLabel.textContent = "Label: " + selectedLabel; // Assuming `selectedLabel` is the selected label value
+    newTaskElement.appendChild(taskLabel); // Append the label to the task item element
 
     // Add drag and drop attributes to the task item
     newTaskElement.draggable = true;
@@ -29,6 +34,7 @@ function TaskModal({ onClose, targetDay, labels }) {
     dashboardTasksDiv.appendChild(newTaskElement);
     onClose();
   }
+
 
   function handleDragStart(event) {
     // Set the dragged data (task ID)
