@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './TaskModal.css';
 import './TaskItem.css';
 
-function TaskModal({ onClose, targetDay }) {
+function TaskModal({ onClose, targetDay, labels }) {
   const [taskName, setTaskName] = useState('');
+  const [selectedLabel, setSelectedLabel] = useState('');
 
   function addTaskToDashboard() {
     const newTaskElement = document.createElement("div");
@@ -44,8 +45,9 @@ function TaskModal({ onClose, targetDay }) {
     event.target.classList.remove("dragging");
   }
 
-
-
+  function handleLabelChange(event) {
+    setSelectedLabel(event.target.value);
+  }
 
   function handleTaskNameChange(event) {
     setTaskName(event.target.value);
@@ -85,10 +87,13 @@ function TaskModal({ onClose, targetDay }) {
             </div>
             <div className="label">
               <label htmlFor="label">Label:</label>
-              <select id="label">
-                <option value="personal">Personal</option>
-                <option value="work">Work</option>
-                <option value="school">School</option>
+              <select id="label" value={selectedLabel} onChange={handleLabelChange}>
+                <option value="">Select label</option>
+                {labels.map((label) => (
+                  <option key={label} value={label}>
+                    {label}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="time">
@@ -102,6 +107,7 @@ function TaskModal({ onClose, targetDay }) {
     </div>
   );
 }
+
 
 export default TaskModal;
 

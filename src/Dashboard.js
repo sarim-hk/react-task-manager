@@ -10,6 +10,7 @@ function Dashboard() {
   const [selectedDay, setSelectedDay] = useState(null);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isLabelModalOpen, setIsLabelModalOpen] = useState(false);
+  const [labels, setLabels] = useState([]);
 
   const toggleLabelModal = () => {
     setIsLabelModalOpen(!isLabelModalOpen);
@@ -18,7 +19,6 @@ function Dashboard() {
   const closeLabelModal = () => {
     setIsLabelModalOpen(false);
   };
-
 
   const [modalStates, setModalStates] = useState({
     Monday: false,
@@ -31,6 +31,11 @@ function Dashboard() {
   });
 
   const handleModalClick = (targetDay) => {
+    const labelElements = document.querySelectorAll('#labels .task-item span');
+    const labelList = Array.from(labelElements).map((element) => element.textContent);
+    console.log(labelList)
+    setLabels(labelList);
+
     setSelectedDay(targetDay);
     setModalStates((prevStates) => ({
       ...prevStates,
@@ -99,7 +104,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Monday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Monday && <TaskModal onClose={handleCloseModal} targetDay="Monday" />}
+            {modalStates.Monday && <TaskModal onClose={handleCloseModal} targetDay="Monday" labels={labels} />}
           </div>
         </div>
 
@@ -109,7 +114,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Tuesday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Tuesday && <TaskModal onClose={handleCloseModal} targetDay="Tuesday" />}
+            {modalStates.Tuesday && <TaskModal onClose={handleCloseModal} targetDay="Tuesday" labels={labels} />}
           </div>
         </div>
 
@@ -119,7 +124,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Wednesday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Wednesday && <TaskModal onClose={handleCloseModal} targetDay="Wednesday" />}
+            {modalStates.Wednesday && <TaskModal onClose={handleCloseModal} targetDay="Wednesday" labels={labels} />}
           </div>
         </div>
 
@@ -129,7 +134,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Thursday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Thursday && <TaskModal onClose={handleCloseModal} targetDay="Thursday" />}
+            {modalStates.Thursday && <TaskModal onClose={handleCloseModal} targetDay="Thursday" labels={labels} />}
           </div>
         </div>
 
@@ -139,7 +144,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Friday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Friday && <TaskModal onClose={handleCloseModal} targetDay="Friday" />}
+            {modalStates.Friday && <TaskModal onClose={handleCloseModal} targetDay="Friday" labels={labels} />}
           </div>
         </div>
 
@@ -149,7 +154,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Saturday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Saturday && <TaskModal onClose={handleCloseModal} targetDay="Saturday" />}
+            {modalStates.Saturday && <TaskModal onClose={handleCloseModal} targetDay="Saturday" labels={labels} />}
           </div>
         </div>
 
@@ -159,7 +164,7 @@ function Dashboard() {
             <button onClick={() => handleModalClick("Sunday")} className="dashboard__day-button">
               Add Task
             </button>
-            {modalStates.Sunday && <TaskModal onClose={handleCloseModal} targetDay="Sunday" />}
+            {modalStates.Sunday && <TaskModal onClose={handleCloseModal} targetDay="Sunday" labels={labels} />}
           </div>
         </div>
 
